@@ -1,0 +1,8 @@
+langsmith
+pdflatex
+langgraph
+jinja2
+openai
+langchain
+langchain_openai
+gitpython

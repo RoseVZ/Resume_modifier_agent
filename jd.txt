@@ -1,0 +1,10 @@
+Passionate about robotics and foundation models. Eager to accelerate application of the Gemini robotics models working with external partners.
+Experience with Google and Deepmind frameworks for model training, evaluation, workflow management and data processing, etc OR experience with development in Google Cloud and One platform.
+Solid python/C++ programming experience in production environment.
+A team player with product mindset, willingness to learn, work with research and product colleagues, focus on delivering value in real-world applications.
+Preferred qualifications: 
+
+Bachelor’s, Master or Ph.D. degree in Computer Science, a related technical field, or equivalent practical experience. 
+Full-stack development with production applications, including scoping, design, implementation, testing, debugging, releasing, deployment, etc.
+Experience with applying robotics ML/AI research to real-world problems and demonstrating impact.
+Collaboration experience with cross functional and cross organizational teams.

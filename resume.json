@@ -1,0 +1,129 @@
+{
+  "personal_info": {
+    "name": "Priyanka Rose Varghese",
+    "email": "prv2108@columbia.edu",
+    "phone": "(607)-738-4490",
+    "linkedin": "https://linkedin.com/in/priyanka-rose-varghese",
+    "github": "https://github.com/RoseVZ"
+  },
+  "education": [
+    {
+      "school": "Columbia University",
+      "degree": "MS in Computer Science, Machine Learning Track",
+      "gpa": "4/4",
+      "start_date": "Aug 2024",
+      "end_date": "Dec 2025",
+      "location": "New York City, NY"
+    },
+    {
+      "school": "University of Visvesvaraya College of Engineering",
+      "degree": "BTech in Computer Science and Engineering",
+      "gpa": "9.32/10",
+      "start_date": "June 2024",
+      "end_date": "June 2024",
+      "location": "Bengaluru, IN"
+    }
+  ],
+  "skills": {
+    "languages": ["Python", "C++", "C", "SQL", "HTML/CSS", "PostgreSQL", "SQLLite", "MySQL", "DAX"],
+    "ml_ai_tools": ["Tensorflow", "Keras", "Pytorch", "OpenCV", "Spacy", "NLTK", "Hugging Face", "Crew AI", "OpenAI SDK", "Langraph"],
+    "frameworks_cloud_tools": ["Django", "Flask", "Gradio", "FastAPI", "RASA", "React", "Git", "GCP", "Kubernetes", "Docker"]
+  },
+  "work_experiences": [
+    {
+      "title": "Project Intern",
+      "company": "NYC Department of Health and Mental Hygiene",
+      "location": "New York City, NY",
+      "start_date": "Feb 2025",
+      "end_date": "Ongoing",
+      "description": [
+        "Developed an end-to-end pipeline to extract sensitive data from vaccination and medical reports, leveraging Qwen2-7B and combining unstructured text with structured metadata for richer context.",
+        "Improved accuracy of medical entity detection and reduced false positives, strengthening compliance with health data privacy regulations."
+      ],
+      "skills": ["Qwen2-7B", "Data Extraction", "ML", "Compliance"]
+    },
+    {
+      "title": "Data Analyst Intern",
+      "company": "DELL Technologies",
+      "location": "Bangalore, IN",
+      "start_date": "Feb 2024",
+      "end_date": "June 2024",
+      "description": [
+        "Built and deployed web crawlers using Selenium and Scrapy for the Dell Global Analytics team, enabling real-time competitor insights and improving data accuracy and coverage by 20%.",
+        "Automated Excel-based reporting workflows in a weekly data pipeline using Python (PyWin32, OpenPyXL), eliminating repetitive manual tasks and accelerating insight delivery by 40%."
+      ],
+      "skills": ["Selenium", "Scrapy", "Python", "Excel Automation", "Data Analysis"]
+    },
+    {
+      "title": "Research Assistant",
+      "company": "Bangalore University",
+      "location": "Bangalore, IN",
+      "start_date": "May 2023",
+      "end_date": "June 2024",
+      "description": [
+        "Conduct research on interpretable cervical cancer prediction using the Sipakmed dataset, applying transfer learning and LIME to support transparency and trust in AI-based medical diagnostics.",
+        "Optimize deep neural architectures (ResNet-50 V2, MobileNetV3, DenseNet-201, VGG-19) on cell image data, achieving 99.8% accuracy."
+      ],
+      "skills": ["Machine Learning", "Transfer Learning", "LIME", "Deep Learning"]
+    },
+    {
+      "title": "Summer Intern",
+      "company": "Dell Technologies",
+      "location": "Bangalore, IN",
+      "start_date": "May 2023",
+      "end_date": "June 2023",
+      "description": [
+        "Collaborate with stakeholders in the Dell Global Analytics team to gather business requirements and design a high-efficiency AI chatbot, reducing data retrieval time by 30%.",
+        "Develop the chatbot using the RASA framework and integrate DAX queries with Dell’s Finance Data Mart, enabling real-time access to financial data and accelerating decision-making."
+      ],
+      "skills": ["RASA", "DAX", "AI Chatbot", "Python"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Real Time Root Cause Analysis in GCP using AI Workflows",
+      "skills": ["GCP", "Kubernetes", "Docker", "BERT", "BigQuery"],
+      "description": [
+        "Built an automated, cloud-native RCA system using GCP (Pub/Sub, Logging, BigQuery) and Kubernetes to enable real-time error classification and remediation across six fault types.",
+        "Fine-tuned BERT classification model and deployed Dockerized, LLM-powered RCA services on Kubernetes for log analysis, integrating with Cloud Functions for event-driven inference."
+      ]
+    },
+    {
+      "name": "Neuralyst - LLM-Powered Task Management System",
+      "skills": ["Python", "Groq", "Firebase", "OpenAI Whisper", "LLAMA"],
+      "description": [
+        "Implemented an LLM-powered web app using OpenAI Whisper, LLaMA, and Firebase featuring voice-to-text input, intelligent task parsing, and real-time data/task synchronization.",
+        "Designed a location and time-aware task prioritization engine using LLMs that dynamically reorders tasks based on user context to maximize user efficiency."
+      ]
+    },
+    {
+      "name": "RoboJackson: Rhythm-Aware Robotic Motion Generation",
+      "skills": ["SMPL", "MuJoCo", "Motion Retargeting", "TQC policy"],
+      "description": [
+        "Built a pipeline to collect trending YouTube Shorts and extract 3D full-body motion using the SMPL model, then retargeted poses to a MuJoCo humanoid by resolving joint and DoF mismatches.",
+        "Developed a custom Gym environment with motion-based rewards and fine-tuned a TQC-pretrained humanoid to perform expressive, stable dance movements via reinforcement learning."
+      ]
+    },
+    {
+      "name": "DeepFake Detection from Facial Images",
+      "skills": ["Python", "Deep Learning", "Transformers", "CNN Architectures", "Computer Vision"],
+      "description": [
+        "Developed a DeepFake detection pipeline by extracting frames from videos and classifying them using Vision Transformers (ViTs) and ResNets (accuracy: 91%) to achieve accurate facial image analysis."
+      ]
+    },
+    {
+      "name": "Personalized Music Recommendation System",
+      "skills": ["Python", "NLP", "ML", "Content-based recommendation", "Flask-Rest API"],
+      "description": [
+        "Developed a content-based recommendation system that leverages cosine similarity to recommend the top 5 songs based on user preferences, returning results as a JSON object via API calls."
+      ]
+    },
+    {
+      "name": "Predictive Models for Disease Identification",
+      "skills": ["Python", "Seaborn", "Matplotlib", "KNN", "Decision Trees", "Ensemble techniques"],
+      "description": [
+        "Developed predictive models for disease identification using SVM, KNN, MLP, and Neural Networks, leveraging a dataset of 140 diseases and their symptoms to achieve a diagnostic accuracy of 94%."
+      ]
+    }
+  ]
+}
