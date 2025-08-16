@@ -52,8 +52,11 @@ The system uses multiple **LangGraph agents (nodes)** to perform specialized tas
 
 ```mermaid
 graph TD
-    A[JD Parser] --> B[Resume Selector]
+    Start([Start]) --> A[JD Parser]
+    A --> B[Resume Selector]
     B --> C[ATS Evaluator]
     C -->|ATS score < 70 & retries < MAX| D[Refiner]
     C -->|ATS score >= 70 or retries >= MAX| E[LaTeX Updater]
     D --> C
+    E --> End([End])
+
