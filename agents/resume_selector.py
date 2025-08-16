@@ -59,7 +59,7 @@ For each project, Order them according to relevance to the job description and r
 - skills
 - description (rephrase using Context + Action + Result to maximize impact), one to two bullet points per project.
 Remember for both experiences and projects descriptions:
-wrap the keywords in \\textbf{{}} (with a leading backslash) to make them bold in the LaTeX output. For keywords in Paranthesis only wrap the text inside(not the '(' or ')')
+wrap catchy phrases, technologies, anything recruiter should notice in \\textbf{{}} (with a leading backslash) to make them bold in the LaTeX output. For keywords in Paranthesis only wrap the text inside(not the '(' or ')')
 - Escape all LaTeX symbols like \\%, &, #, $, _,  with a backslash.
 
 Return ONLY a JSON object with two keys: 

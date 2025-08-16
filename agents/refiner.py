@@ -14,7 +14,7 @@ You are a resume expert.
 Rewrite the following bullet points so they naturally include the job keywords.
 Use Context + Action + Result format. 
 Preserve truth. Keep each bullet separate.
-wrap the keywords in \\textbf{{}} to make them bold in the LaTeX output. and always put a \\ before symbols like \\%
+wrap the important parts in \\textbf{{}} to make them bold in the LaTeX output. and always put a \\ before symbols like \\%
 Job keywords: {jd_keywords}
 
 Bullets:

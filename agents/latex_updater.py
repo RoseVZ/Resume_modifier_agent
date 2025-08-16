@@ -3,69 +3,57 @@ from pathlib import Path
 import subprocess
 
 def escape_latex(text: str) -> str:
-    """
-    Escape LaTeX special characters in text.
-    """
     replacements = {
-        # "\\": "\\textbackslash{}",
-        "&": "\\&",
-        "%": "\\%",
-        "$": "\\$",
-        "#": "\\#",
-        "_": "\\_",
-        # "{": "\\{",
-        # "}": "\\}",
-        "~": "\\textasciitilde{}",
-        "^": "\\textasciicircum{}",
+        '//': r'/',
+        '&': r'\&',
+        '%': r'\%',
+        '$': r'\$',
+        '#': r'\#',
+        '_': r'\_',
+        '~': r'\textasciitilde{}',
+        '^': r'\^{}',
     }
-    for char, repl in replacements.items():
-        text = text.replace(char, repl)
+    for k, v in replacements.items():
+        text = text.replace(k, v)
     return text
 
 def latex_updater(state):
-    """
-    Updates the LaTeX resume with selected experiences and projects,
-    then pushes the changes to Overleaf via Git.
-    """
     latex_template_path = Path("overleaf_resume/main.tex")
     backup_path = latex_template_path.with_suffix(".bak.tex")
 
+    # Backup original template
     if not backup_path.exists():
         latex_template_path.rename(backup_path)
     template_text = backup_path.read_text()
 
-    # Generate LaTeX blocks for experiences
-    exp_latex_list = []
+    # --- Experiences ---
+    exp_tex = []
     for exp in state.get("selected_experiences", []):
-        exp_block = f"""\\resumeSubheading
-  {{{exp.company}}}{{{exp.location}}}
-  {{{exp.title}}}{{{exp.start_date} -- {exp.end_date}}}
-  \\resumeItemListStart
-
-"""
+        block = f"\\resumeSubheading\n" \
+                f"  {{{escape_latex(exp.company)}}}{{{escape_latex(exp.location)}}}\n" \
+                f"  {{{escape_latex(exp.title)}}}{{{escape_latex(exp.start_date)} -- {escape_latex(exp.end_date)}}}\n" \
+                f"  \\resumeItemListStart\n"
         for item in exp.description:
-            exp_block += f"    \\resumeItem{{{escape_latex(item)}}}\n"
-        exp_block += "  \\resumeItemListEnd\n  \\vspace{{2pt}}\n"
-        exp_latex_list.append(exp_block)
-    experiences_tex = "\n".join(exp_latex_list)
+            block += f"    \\resumeItem{{{escape_latex(item)}}}\n"
+        block += "  \\resumeItemListEnd\n  \\vspace{2pt}\n"
+        exp_tex.append(block)
 
-    # Generate LaTeX blocks for projects
-    proj_latex_list = []
+    # --- Projects ---
+    proj_tex = []
     for proj in state.get("selected_projects", []):
-        proj_block = f"""\\resumeProjectHeading
-  {{\\textbf{{{escape_latex(proj.name)}}} $|$ \\emph{{{', '.join([escape_latex(s) for s in proj.skills])}}}}}{{}}
-  \\resumeItemListStart
-"""
+        skills_tex = ', '.join(map(escape_latex, proj.skills))
+        block = f"\\resumeProjectHeading\n" \
+                f"  {{\\textbf{{{escape_latex(proj.name)}}} $|$ \\emph{{{skills_tex}}}}}{{}}\n" \
+                f"  \\resumeItemListStart\n"
         for item in proj.description:
-            proj_block += f"    \\resumeItem{{{escape_latex(item)}}}\n"
-        proj_block += "  \\resumeItemListEnd\n  \\vspace{{-10pt}}\n"
-        proj_latex_list.append(proj_block)
-    projects_tex = "\n".join(proj_latex_list)
+            block += f"    \\resumeItem{{{escape_latex(item)}}}\n"
+        block += "  \\resumeItemListEnd\n  \\vspace{-10pt}\n"
+        proj_tex.append(block)
 
-    # Replace placeholders in LaTeX template, keeping the markers
+    # Replace placeholders
     updated_text = template_text
-    updated_text = updated_text.replace("%<<EXPERIENCES>>%", "%<<EXPERIENCES>>%\n"+experiences_tex)
-    updated_text = updated_text.replace("%<<PROJECTS>>%", "%<<PROJECTS>>%\n"+projects_tex)
+    updated_text = updated_text.replace("%<<EXPERIENCES>>%", "\n".join(exp_tex))
+    updated_text = updated_text.replace("%<<PROJECTS>>%", "\n".join(proj_tex))
 
     latex_template_path.write_text(updated_text)
     print("LaTeX updated successfully!")
@@ -79,7 +67,6 @@ def latex_updater(state):
             subprocess.run(["git", "-C", str(latex_template_path.parent), "add", "."], check=True)
             subprocess.run(["git", "-C", str(latex_template_path.parent), "commit", "-m", "Update resume LaTeX automatically"], check=True)
             subprocess.run(["git", "-C", str(latex_template_path.parent), "push", repo_url, "master"], check=True)
-
             print("Pushed updates to Overleaf successfully!")
         except subprocess.CalledProcessError as e:
             print("Git push failed:", e)
