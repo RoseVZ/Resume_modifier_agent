@@ -10,6 +10,9 @@ from typing import List, Dict
 class Experience(BaseModel):
     title: str
     company: str
+    location: str
+    start_date: str 
+    end_date: str 
     skills: List[str]
     description: List[str] 
 
@@ -43,13 +46,21 @@ Do not include anything that is not in the master resume. Stick strictly to the 
 For each experience, return an object with:
 - title
 - company
+- location
+- start_date
+- end_date
 - skills
-- description (rephrase using Context + Action + Result to maximize impact) Two to three bullet points per experience.
+- description (rephrase using Context + Action + Result to maximize impact) Two to three bullet points per experience
+Be truthful to the original content, but enhance clarity and impact.
+
 
 For each project, Order them according to relevance to the job description and return an object with:
 - name
 - skills
 - description (rephrase using Context + Action + Result to maximize impact), one to two bullet points per project.
+Remember for both experiences and projects descriptions:
+wrap the keywords in \\textbf{{}} (with a leading backslash) to make them bold in the LaTeX output. For keywords in Paranthesis only wrap the text inside(not the '(' or ')')
+- Escape all LaTeX symbols like \\%, &, #, $, _,  with a backslash.
 
 Return ONLY a JSON object with two keys: 
 - "experiences": [array of experiences]
@@ -66,6 +77,7 @@ Master Resume: {json.dumps(resume_copy, indent=2)}
     # ---------------- Clean response ----------------
     response_text = response.content.strip()
     response_text = re.sub(r"^```json|```$", "", response_text).strip()
+    response_text = response_text.replace("\\", "\\\\")
 
     try:
         # Parse JSON from LLM
@@ -77,19 +89,24 @@ Master Resume: {json.dumps(resume_copy, indent=2)}
 
     except Exception as e:
         print("LLM JSON parsing/validation failed:", e)
-        # Fallback: simple keyword match
+
+        # Fallback with Pydantic enforcement
         validated_experiences = [
-            exp for exp in resume_copy.get("work_experiences", [])
+            Experience(**exp)
+            for exp in resume_copy.get("work_experiences", [])
             if any(kw.lower() in " ".join(exp.get("skills", [])).lower() for kw in jd_keywords)
         ]
+
         validated_projects = [
-            proj for proj in resume_copy.get("projects", [])
+            Project(**proj)
+            for proj in resume_copy.get("projects", [])
             if any(kw.lower() in " ".join(proj.get("skills", [])).lower() for kw in jd_keywords)
         ]
 
-    print(f"Selected {len(validated_experiences)} experiences and {len(validated_projects)} projects.")
-    print("Experiences:", validated_experiences)
-    print("Projects:", validated_projects)
+
+    # print(f"Selected {len(validated_experiences)} experiences and {len(validated_projects)} projects.")
+    # print("Experiences:", validated_experiences)
+    # print("Projects:", validated_projects)
     state["selected_experiences"] = validated_experiences
     state["selected_projects"] = validated_projects
 

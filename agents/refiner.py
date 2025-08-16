@@ -14,7 +14,7 @@ You are a resume expert.
 Rewrite the following bullet points so they naturally include the job keywords.
 Use Context + Action + Result format. 
 Preserve truth. Keep each bullet separate.
-
+wrap the keywords in \\textbf{{}} to make them bold in the LaTeX output. and always put a \\ before symbols like \\%
 Job keywords: {jd_keywords}
 
 Bullets:
@@ -32,6 +32,7 @@ Return ONLY a JSON array of strings representing the refined bullet points.
             refined_bullets = exp.description  # fallback
         exp.description = refined_bullets
         refined.append(exp)
+    print(f"Refined {len(refined)} experiences with updated descriptions.")
 
     state["selected_experiences"] = refined
     state["refined"] = True
