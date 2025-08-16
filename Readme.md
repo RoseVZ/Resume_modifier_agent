@@ -14,7 +14,7 @@ The system uses multiple **LangGraph agents (nodes)** to perform specialized tas
 |--------------|----------------|
 | **JD Parser** | Parses job descriptions (`jd.txt`) and extracts keywords to structure the state. |
 | **Resume Selector** | Picks relevant experiences and projects from `resume.json` based on JD keywords. |
-| **ATS Evaluator** | Scores the resume in an ATS-like manner; stores `ats_score` in state. |
+| **Recruiter Evaluator** | Scores the resume in an ATS-like manner; stores `ats_score` in state. |
 | **Refiner** | Refines content, keywords, and formatting when ATS score < threshold; loops back to `ATS Evaluator`. |
 | **LaTeX Updater** | Generates the LaTeX resume (`main.tex`) from the final state and optionally pushes to Overleaf. |
 
@@ -30,7 +30,7 @@ The system uses multiple **LangGraph agents (nodes)** to perform specialized tas
    - Input: `state` from JD Parser + `resume.json`  
    - Output: selected experiences/projects in state.
 
-3. **ATS Evaluation:** `ATS Evaluator`  
+3. **Recruiter Evaluation:** `ATS Evaluator`  
    - Computes ATS score (`ats_score`) for the current resume state.
 
 4. **Conditional Decision Logic:**  
