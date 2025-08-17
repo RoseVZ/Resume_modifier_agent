@@ -5,8 +5,10 @@ import subprocess
 def escape_latex(text: str) -> str:
     replacements = {
         '//': r'/',
+     
+
         '&': r'\&',
-        '%': r'\%',
+        '\\%': r'\%',
         '$': r'\$',
         '#': r'\#',
         '_': r'\_',
