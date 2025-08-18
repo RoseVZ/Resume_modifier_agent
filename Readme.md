@@ -8,7 +8,7 @@ sdk_version: 4.44.1
 
 This project leverages **LangGraph** to build an agentic pipeline that automatically parses job descriptions, selects relevant resume content, evaluates it via ATS, refines it if needed, and generates a LaTeX resume.
 
-This system directly modifies my Overleaf project (as this is for my personal use). _[If you want to use this please connect your Overleaf project repo to this nd update your env with OpenAI keys, Overleaf project ID and auth keys.]_
+This system directly modifies my Overleaf project (as this is for my personal use). _[If you want to use this please connect your Overleaf project repo to this and update your .env with OpenAI keys, Overleaf project ID and auth keys.]_
 
 ---
 
