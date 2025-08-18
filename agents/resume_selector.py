@@ -60,8 +60,8 @@ For each project, Order them according to relevance to the job description and r
 - description (rephrase using Context + Action + Result to maximize impact), one to two bullet points per project.
 Remember for both experiences and projects descriptions:
 wrap all catchy phrases, results, impact clauses even the non numerical and technologies, anything recruiter should notice in \\textbf{{}} (with a leading backslash) to make them bold in the LaTeX output. For keywords in Paranthesis only wrap the text inside(not the '(' or ')') 
-- Escape all LaTeX symbols like \\%, &, #, $, _,  with a backslash.
--write descitpion not in first  person, but in third person.
+- Very very important: Escape all LaTeX symbols like \\%, &, #, $, _,  with a backslash.
+- write description not in first  person, but in third person.
 Return ONLY a JSON object with two keys: 
 - "experiences": [array of experiences]
 - "projects": [array of projects]

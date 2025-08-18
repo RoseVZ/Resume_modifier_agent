@@ -1,3 +1,9 @@
+---
+title: Resume_modifier_agent
+app_file: main.py
+sdk: gradio
+sdk_version: 4.44.1
+---
 # Agentic Resume Builder with LangGraph
 
 This project leverages **LangGraph** to build an agentic pipeline that automatically parses job descriptions, selects relevant resume content, evaluates it via ATS, refines it if needed, and generates a LaTeX resume.

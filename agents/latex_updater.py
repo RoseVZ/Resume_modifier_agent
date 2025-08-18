@@ -5,9 +5,8 @@ import subprocess
 def escape_latex(text: str) -> str:
     replacements = {
         '//': r'/',
-     
-
         '&': r'\&',
+
         '\\%': r'\%',
         '$': r'\$',
         '#': r'\#',
@@ -59,7 +58,7 @@ def latex_updater(state):
 
     latex_template_path.write_text(updated_text)
     print("LaTeX updated successfully!")
-
+    value="LaTeX updated successfully!"
     # Optional: push to Overleaf
     overleaf_token = os.getenv("OVERLEAF_TOKEN")
     overleaf_project_id = os.getenv("OVERLEAF_PROJECT_ID")
@@ -70,9 +69,12 @@ def latex_updater(state):
             subprocess.run(["git", "-C", str(latex_template_path.parent), "commit", "-m", "Update resume LaTeX automatically"], check=True)
             subprocess.run(["git", "-C", str(latex_template_path.parent), "push", repo_url, "master"], check=True)
             print("Pushed updates to Overleaf successfully!")
+            git_status ="Pushed updates to Overleaf successfully!"
         except subprocess.CalledProcessError as e:
             print("Git push failed:", e)
+            git_status ="Git push failed:"
     else:
         print("OVERLEAF_TOKEN or OVERLEAF_PROJECT_ID not set; skipping push.")
-
+    state["latex_update"] = value
+    state["git_status"] = git_status
     return state
